@@ -25,7 +25,7 @@ function generateId() {
 }
 
 let db = localStorage.getItem("tasklist") || "[]"; // null || [] => []
-let taskArray = JSON.parse(db);
+export let taskArray = JSON.parse(db);
 
 if (taskArray.length === 0) {
   notodoitem.style.display = "block";
@@ -35,7 +35,7 @@ if (taskArray.length === 0) {
   });
 }
 
-function renderTask(ele) {
+export function renderTask(ele) {
   notodoitem.style.display = "none";
   const div = document.createElement("div");
   div.setAttribute("class", "task-card");
