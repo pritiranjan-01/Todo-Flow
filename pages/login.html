@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TodoFlow - Authentication</title>
+    <link rel="stylesheet" href="../css/Login.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script defer src="../js/login.js"></script>
+    <script defer type="module" src="../js/firebaseAuth.js"></script>
+  </head>
+
+  <body>
+    <div class="floating-elements">
+      <div
+        class="floating-element"
+        style="left: 10%; animation-delay: 0s"
+      ></div>
+      <div
+        class="floating-element"
+        style="left: 20%; animation-delay: 2s"
+      ></div>
+      <div
+        class="floating-element"
+        style="left: 30%; animation-delay: 4s"
+      ></div>
+      <div
+        class="floating-element"
+        style="left: 40%; animation-delay: 6s"
+      ></div>
+      <div
+        class="floating-element"
+        style="left: 50%; animation-delay: 8s"
+      ></div>
+      <div
+        class="floating-element"
+        style="left: 60%; animation-delay: 10s"
+      ></div>
+      <div
+        class="floating-element"
+        style="left: 70%; animation-delay: 12s"
+      ></div>
+      <div
+        class="floating-element"
+        style="left: 80%; animation-delay: 14s"
+      ></div>
+      <div
+        class="floating-element"
+        style="left: 90%; animation-delay: 16s"
+      ></div>
+    </div>
+
+    <div class="auth-container">
+      <div class="error-message" id="errorMessage"></div>
+      <div class="success-message" id="successMessage"></div>
+
+      <!-- Login Form -->
+      <div class="login-form" id="loginForm">
+        <div class="auth-header">
+          <div class="logo">TodoFlow</div>
+          <h1 class="auth-title">Welcome Back</h1>
+          <p class="auth-subtitle">Sign in to access your todos</p>
+        </div>
+
+        <form id="loginFormElement">
+          <div class="form-group">
+            <label class="form-label" for="loginEmail">Email Address</label>
+            <input
+              type="email"
+              id="loginEmail"
+              class="form-input"
+              placeholder="Enter your email"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="loginPassword">Password</label>
+            <input
+              type="password"
+              id="loginPassword"
+              class="form-input"
+              placeholder="Enter your password"
+              required
+            />
+            <button
+              type="button"
+              class="password-toggle1"
+              onclick="togglePassword('loginPassword', this)"
+            >
+              <i class="fa-solid fa-eye"></i>
+            </button>
+          </div>
+          <button type="submit" class="auth-button" id="loginButton">
+            Sign In
+          </button>
+        </form>
+
+        <div class="auth-switch">
+          <p>Don't have an account?</p>
+          <button
+            type="button"
+            class="switch-button"
+            onclick="showRegistration()"
+          >
+            Create Account
+          </button>
+        </div>
+      </div>
+
+      <!-- Registration Form -->
+      <div class="registration-form" id="registrationForm">
+        <div class="auth-header">
+          <div class="logo">TodoFlow</div>
+          <h1 class="auth-title">Create Account</h1>
+          <p class="auth-subtitle">Join thousands of organized users</p>
+        </div>
+
+        <form id="registrationFormElement">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="firstName">First Name</label>
+              <input
+                type="text"
+                id="firstName"
+                class="form-input"
+                placeholder="Enter FirstName"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="lastName">Last Name</label>
+              <input
+                type="text"
+                id="lastName"
+                class="form-input"
+                placeholder="Enter LastName"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="registerEmail">Email Address</label>
+            <input
+              type="email"
+              id="registerEmail"
+              class="form-input"
+              placeholder="Enter your Email"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="registerPassword">Password</label>
+            <div class="password-container">
+              <input
+                type="password"
+                id="registerPassword"
+                class="form-input"
+                placeholder="Create a strong password"
+                required
+              />
+              <button
+                type="button"
+                class="password-toggle"
+                onclick="togglePassword('registerPassword', this)"
+              >
+                <i class="fa-solid fa-eye"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="confirmPassword"
+              >Confirm Password</label
+            >
+            <div class="password-container">
+              <input
+                type="password"
+                id="confirmPassword"
+                class="form-input"
+                placeholder="Confirm your password"
+                required
+              />
+              <button
+                type="button"
+                class="password-toggle"
+                onclick="togglePassword('confirmPassword', this)"
+              >
+                <i class="fa-solid fa-eye"></i>
+              </button>
+            </div>
+          </div>
+
+          <button type="submit" class="auth-button" id="registerButton">
+            Create Account
+          </button>
+        </form>
+
+        <div class="auth-switch">
+          <p>Already have an account?</p>
+          <button type="button" class="switch-button" onclick="showLogin()">
+            Sign In
+          </button>
+        </div>
+      </div>
+
+      <div class="form-footer">
+        <a href="../index.html" class="back-home">← Back to Home</a>
+      </div>
+    </div>
+    <div id="loaderOverlay" class="loader-overlay hidden">
+      <span class="loader"></span>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo FLow</title>
+    <link rel="stylesheet" href="../css/todo.css" />
+    <script defer src="../js/filter.js"></script>
+    <script type="module" defer src="../js/todo.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <main id="main">
+      <h1 id="nameGreet" class="heading">Loading...</h1>
+      <h1 class="heading">What's on Your Mind Today?</h1>
+      <section id="taskinput-container">
+        <input id="addtask" type="text" placeholder="Add your tasks" />
+        <button id="addbtn"><i class="fa-solid fa-plus"></i></button>
+      </section>
+      <section id="filter-section">
+        <div>
+          <input
+            type="date"
+            name=""
+            id="bydate"
+            min="2025-01-01"
+            max="2026-12-31"
+          />
+        </div>
+        <div>
+          <select name="" id="byStatus">
+            <option disabled selected value="">Select</option>
+            <option value="all">All</option>
+            <option value="pending">Pending</option>
+            <option value="completed">Completed</option>
+          </select>
+        </div>
+        <button id="search-btn">Search</button>
+      </section>
+      <!-- here the task cards are rendered. -->
+      <section id="todo-container">
+        <div id="no-todo-item">
+          <img src="../asset/notaskimg.png" alt="" />
+          <p>No tasks yet — ready to plan your day?</p>
+        </div>
+      </section>
+    </main>
+    <section id="controls">
+      <div class="power-container">
+        <a id="logoutBtn" href="#"><i class="fa-solid fa-power-off"></i></a>
+      </div>
+      <div class="star-container">
+        <p>Give a star on</p>
+        <a href="https://github.com/pritiranjan-01/Todo-Flow" target="_top"><i class="fa-brands fa-github"></i></a>
+      </div>
+    </section>
+  </body>
+</html>
