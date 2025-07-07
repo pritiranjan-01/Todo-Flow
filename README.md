@@ -19,9 +19,7 @@
 
 ## 🖥️ Live Demo
 
-🌐 [View Live on Netlify](https://your-netlify-link.netlify.app)  
-_(Replace with your actual deployed URL)_
-
+🌐 [View Live on Netlify](https://todo-flow-app.netlify.app/)  
 ---
 
 ## 🛠️ Tech Stack
@@ -36,7 +34,7 @@ _(Replace with your actual deployed URL)_
 ## 📂 Folder Structure
 
 <pre>
-📁 TodoList/
+📁 TodoFlow/
 ├── .git/
 ├── .vscode/
 ├── asset/
@@ -66,4 +64,3 @@ _(Replace with your actual deployed URL)_
 
 ```bash
 git clone https://github.com/pritiranjan-01/Todo-Flow.git
-cd Todo-Flow
