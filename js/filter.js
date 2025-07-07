@@ -25,7 +25,7 @@ searchBtn.addEventListener("click", () => {
     const [yyyy, mm, dd] = selectedDate.split("-");
     formattedDate = `${parseInt(dd)}/${parseInt(mm)}/${yyyy}`;
   }
-// Get the details from the array. and then filter.
+  // Get the details from the array. and then filter.
 
   let db = localStorage.getItem("tasklist") || "[]"; // null || [] => []
   let taskArray = JSON.parse(db);
@@ -48,7 +48,10 @@ searchBtn.addEventListener("click", () => {
 
   // Show filtered tasks or "no task" message
   if (filteredTasks.length === 0) {
-    noTaskMessage.style.display = "block";
+    const notask = document.createElement("p");
+    notask.setAttribute("id", "noFilteredTask");
+    notask.innerText = "No such task based on your query";
+    container.appendChild(notask);
     console.log("Showing no-task image");
   } else {
     noTaskMessage.style.display = "none";

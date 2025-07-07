@@ -316,3 +316,10 @@ main {
    pointer-events: auto;
    color:rgba(0, 0, 0, 0.774)
 }
+
+#noFilteredTask{
+  font-family: monospace;
+  font-weight: bold;
+  font-size: 16px;
+  letter-spacing: 1px;
+}
