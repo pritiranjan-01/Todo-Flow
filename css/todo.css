@@ -363,6 +363,7 @@ main {
 @media (min-width: 481px) and (max-width: 768px) {
   main {
     width: 85%;
+    height: auto;
   }
 
   #addtask {
