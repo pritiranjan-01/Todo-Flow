@@ -118,12 +118,16 @@ container.addEventListener("click", (e) => {
     if (inputField.disabled) {
       // Start editing
       inputField.disabled = false;
+      inputField.style.backgroundColor="white";
+      inputField.style.color="black";
       inputField.focus();
       icon.classList.remove("fa-pen");
       icon.classList.add("fa-check");
     } else {
       // Save edited task
       const newText = inputField.value;
+      inputField.style.backgroundColor="";
+      inputField.style.color="";
       if (newText === "") {
         alert("Task can't be empty!");
         return;
