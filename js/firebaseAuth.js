@@ -47,7 +47,6 @@ loginForm.addEventListener("submit", (e) => {
     .then((userCredential) => {
       // Signed in
       const user = userCredential.user;
-
       const dt = new Date().toISOString(); // Use ISO format for better readability
       update(ref(database, "users/" + user.uid), {
         last_login: dt,
@@ -65,6 +64,7 @@ loginForm.addEventListener("submit", (e) => {
       const errorCode = error.code;
       const errorMessage = error.message;
       alert(errorMessage);
+      loader.classList.add("hidden");
     });
 });
 
