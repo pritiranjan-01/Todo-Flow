@@ -30,20 +30,14 @@ main {
   border-radius: 15px;
   /* overflow: scroll; */
   background: #2a7b9b;
-  background: linear-gradient(
-    90deg,
-    rgba(42, 123, 155, 1) 0%,
-    rgba(87, 199, 133, 1) 50%,
-    rgba(237, 221, 83, 1) 100%
-  );
+  background: linear-gradient(90deg, rgba(42, 123, 155, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(237, 221, 83, 1) 100%);
 }
 #nameGreet {
   margin-top: 10px;
 }
 
 .heading {
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   text-align: center;
   color: black;
   padding: 0px 0px 10px 0px;
@@ -215,11 +209,7 @@ main {
   position: relative;
   background-image: linear-gradient(to top, #a981bb 9%, #ffc8a9 100%);
   background: linear-gradient(to bottom, #323232 0%, #3f3f3f 40%, #1c1c1c 150%),
-    linear-gradient(
-      to top,
-      rgba(255, 255, 255, 0.4) 0%,
-      rgba(0, 0, 0, 0.25) 200%
-    );
+    linear-gradient(to top, rgba(255, 255, 255, 0.4) 0%, rgba(0, 0, 0, 0.25) 200%);
   background-blend-mode: multiply;
   box-shadow: 0px 0px 10px 2px #cbce24;
 }
@@ -329,7 +319,8 @@ main {
   main {
     width: 95%;
     margin: 10px 0;
-    height: auto;
+    height: 90vh;
+    padding-bottom: 35px;
   }
 
   #addtask {
@@ -356,10 +347,10 @@ main {
   .fa-power-off {
     font-size: 20px;
   }
- .statistics,
+  .statistics,
   .stats-minimised {
     width: 100%;
-    flex-wrap:wrap;
+    flex-wrap: wrap;
     justify-content: center;
     gap: 8px;
     margin: 10px auto;
@@ -387,8 +378,6 @@ main {
     right: 5px;
     padding: 3px 5px;
   }
-
-
 }
 /*For Tablets (481-768px) */
 @media (min-width: 481px) and (max-width: 768px) {
