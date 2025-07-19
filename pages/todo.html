@@ -18,21 +18,33 @@
   <body>
     <main id="main">
       <h1 id="nameGreet" class="heading">Loading...</h1>
-      <h1 class="heading">What's on Your Mind Today?</h1>
+      <h1 class="heading quote">What's on Your Mind Today?</h1>
+      <div class="statistics stats-minimised">
+        <button id="expand-btn"><i class="fa-solid fa-caret-down"></i></button>
+        <section class="minimised">
+          <div id="total-task" class="stat-value">0</div>
+          <div class="stat-lebel stat-lebel-minimised">Total Tasks</div>
+        </section>
+        <section class="minimised">
+          <div id="completed-task" class="stat-value">0</div>
+          <div class="stat-lebel stat-lebel-minimised">Completed</div>
+        </section>
+        <section class="minimised">
+          <div id="pending-task" class="stat-value">0</div>
+          <div class="stat-lebel stat-lebel-minimised">Pending</div>
+        </section>
+        <section class="minimised-none-complition-sec minimised" id="complition-section">
+          <div id="completion-rate" class="stat-value">0%</div>
+          <div class="stat-lebel stat-lebel-minimised">Complition Rate</div>
+        </section>
+      </div>
       <section id="taskinput-container">
         <input id="addtask" type="text" placeholder="Add your tasks" />
         <button id="addbtn"><i class="fa-solid fa-plus"></i></button>
       </section>
       <section id="filter-section">
         <div>
-          <input
-            placeholder="Select a Date"
-            type="date"
-            name=""
-            id="bydate"
-            min="2025-01-01"
-            max="2026-12-31"
-          />
+          <input placeholder="Select a Date" type="date" name="" id="bydate" min="2025-01-01" max="2026-12-31" />
         </div>
         <div>
           <select name="" id="byStatus">
@@ -52,12 +64,12 @@
         </div>
       </section>
     </main>
-      <div class="power-container">
-        <a id="logoutBtn" href="#"><i class="fa-solid fa-power-off"></i></a>
-      </div>
-      <div class="star-container">
-        <p>Give a star on</p>
-        <a href="https://github.com/pritiranjan-01/Todo-Flow" target="_top"><i class="fa-brands fa-github"></i></a>
-      </div>
+    <div class="power-container">
+      <a id="logoutBtn" href="#"><i class="fa-solid fa-power-off"></i></a>
+    </div>
+    <div class="star-container">
+      <p>Give a star on</p>
+      <a href="https://github.com/pritiranjan-01/Todo-Flow" target="_top"><i class="fa-brands fa-github"></i></a>
+    </div>
   </body>
 </html>

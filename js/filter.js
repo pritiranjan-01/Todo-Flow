@@ -15,7 +15,7 @@ searchBtn.addEventListener("click", () => {
   // console.log("Selected Status:", selectedStatus);
 
   if (selectedDate == "" || selectedStatus == "") {
-    alert("Select the search parameters");
+   alert("Choose all the search parameters");
     return;
   }
 

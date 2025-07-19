@@ -3,6 +3,12 @@ const container = document.querySelector("#todo-container");
 const notodoitem = document.querySelector("#no-todo-item");
 const task = document.querySelector("#addtask"); /// Entered-Task
 const addtask = document.querySelector("#addbtn"); /// plus button
+const statisticsDivision= document.querySelector(".statistics")
+const totalTask=document.querySelector("#total-task");
+const compltedTask=document.querySelector("#completed-task");
+const pendingTask=document.querySelector("#pending-task");
+const completionRate=document.querySelector("#completion-rate");
+const expandbtn= document.querySelector("#expand-btn");
 
 function getDate() {
   let currentDate = new Date();
@@ -27,9 +33,25 @@ function generateId() {
 let db = localStorage.getItem("tasklist") || "[]"; // null || [] => []
 export let taskArray = JSON.parse(db);
 
+//statistics
+function statistics(){
+  totalTask.innerText=taskArray.length;
+  let count=0;
+  taskArray.filter((ele)=>{
+  if(ele.isCompleted==true)
+    count++;
+  })
+  compltedTask.innerText=count;
+  pendingTask.innerText=taskArray.length-count;
+  completionRate.innerText= taskArray.length === 0 ? "0%" : (count / taskArray.length * 100).toFixed(1) + "%";;
+}
+
 if (taskArray.length === 0) {
+  statisticsDivision.style.display="none";
   notodoitem.style.display = "block";
 } else {
+  statisticsDivision.style.display="flex";
+  statistics();
   taskArray.forEach((ele) => {
     renderTask(ele);
   });
@@ -70,6 +92,8 @@ addtask.addEventListener("click", (e) => {
     // console.log(taskArray);
     localStorage.setItem("tasklist", JSON.stringify(taskArray));
     task.value = "";
+    statisticsDivision.style.display="flex"
+    statistics();
     renderTask(obj);
   }
 });
@@ -93,10 +117,12 @@ container.addEventListener("click", (e) => {
   if (e.target.closest(".delete")) {
     taskArray.splice(taskIndex, 1); // Remove 1 item starting at index taskIndex from the array
     taskCard.remove(); // remove from UI
+    statistics();
     localStorage.setItem("tasklist", JSON.stringify(taskArray));
 
     // Show "no tasks" message if list is empty
     if (taskArray.length === 0) {
+      statisticsDivision.style.display="none"
       notodoitem.style.display = "block";
     }
   }
@@ -107,6 +133,7 @@ container.addEventListener("click", (e) => {
     const taskName = taskCard.querySelector("#taskname");
     taskName.classList.toggle("completed");
     localStorage.setItem("tasklist", JSON.stringify(taskArray));
+    statistics();
   }
 
   // ✅ Edit as Task
@@ -215,4 +242,29 @@ logoutBtn.addEventListener("click", () => {
     .catch((error) => {
       console.error("Logout failed:", error);
     });
+});
+
+// Expand section
+
+expandbtn.addEventListener("click", () => {
+  const statsMinimised = document.querySelector(".stats-minimised") || document.querySelector(".statistics");
+  const minimisedSections = document.querySelectorAll(".minimised, .statistics > section");
+  const hideCompletionRate = document.querySelector("#complition-section");
+  const statLabelMinimised = document.querySelectorAll(".stat-lebel, .stat-lebel-minimised");
+
+  // Toggle .stats-minimised on container
+  statsMinimised.classList.toggle("stats-minimised");
+
+  // Toggle .minimised on each stat section
+  minimisedSections.forEach(el => {
+    el.classList.toggle("minimised");
+  });
+
+  // Toggle .minimised-none-complition-sec on completion section
+  hideCompletionRate.classList.toggle("minimised-none-complition-sec");
+
+  // Toggle .stat-lebel-minimised on each label
+  statLabelMinimised.forEach(el => {
+    el.classList.toggle("stat-lebel-minimised");
+  });
 });
