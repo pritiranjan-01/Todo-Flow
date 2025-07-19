@@ -349,20 +349,21 @@ main {
   }
   .statistics,
   .stats-minimised {
-    width: 100%;
+    width: 95% !important;
+    display:flex !important;
+    flex-direction: row !important;
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 8px;
-    margin: 10px auto;
+    align-items: center;
+    gap: 0px !important;
     padding: 10px;
     border-radius: 10px;
+    /* background-color: yellowgreen !important; */
   }
-
   .statistics > section,
   .statistics > .minimised {
-    width: 80px;
-    margin: 5px;
-    flex-direction: column;
+    width: 55% !important;
+      margin: 0 35px 0 10px !important;
+    /* background-color: #764ba2 !important; */
   }
 
   .stat-value {
@@ -458,7 +459,7 @@ main {
   flex-wrap: nowrap; /* force items to stay in one line */
   flex-direction: row;
   align-items: center;
-  justify-content: center; /* spread them out evenly */
+  justify-content: space-evenly; /* spread them out evenly */
   padding: 0;
   gap: 0px; /* or 0 */
 }
