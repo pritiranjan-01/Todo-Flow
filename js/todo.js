@@ -82,21 +82,39 @@ addtask.addEventListener("click", (e) => {
     alert("Enter the task to Add");
     return;
   } else {
+    // Reset filter UI and remove filter message
+    const bydate = document.getElementById("bydate");
+    const byStatus = document.getElementById("byStatus");
+    if (bydate) bydate.value = "";
+    if (byStatus) byStatus.value = "";
+
+    // Remove filter message if present
+    const noFilteredTask = document.getElementById("noFilteredTask");
+    if (noFilteredTask) noFilteredTask.remove();
+
+    // Show all tasks (clear previous todo cards and re-render)
+    container.innerHTML = "";
+
+    // Add the new task
     const obj = {
       id: generateId(),
       text: task.value,
       date: getDate(),
       isCompleted: false,
     };
-    taskArray.push(obj); // Add the object, not the string
-    // console.log(taskArray);
+
+    taskArray.push(obj);
     localStorage.setItem("tasklist", JSON.stringify(taskArray));
     task.value = "";
-    statisticsDivision.style.display="flex"
+    statisticsDivision.style.display = "flex";
     statistics();
-    renderTask(obj);
+    // Render all tasks
+    taskArray.forEach((ele) => {
+      renderTask(ele);
+    });
   }
 });
+
 
 //! Codes for button (Edit, Mark-as-complete, delete)
 

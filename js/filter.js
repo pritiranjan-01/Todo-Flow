@@ -52,7 +52,7 @@ searchBtn.addEventListener("click", () => {
     notask.setAttribute("id", "noFilteredTask");
     notask.innerText = "No such task based on your query";
     container.appendChild(notask);
-    console.log("Showing no-task image");
+    // console.log("Showing no-task image");
   } else {
     noTaskMessage.style.display = "none";
     filteredTasks.forEach(renderTask);
