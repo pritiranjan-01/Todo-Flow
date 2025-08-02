@@ -342,6 +342,9 @@ main {
     flex-direction: column;
     align-items: flex-start;
   }
+.task-card > input {
+  width: 72%;
+}
 
   .fa-github,
   .fa-power-off {
