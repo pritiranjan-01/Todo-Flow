@@ -61,20 +61,33 @@ export function renderTask(ele) {
   notodoitem.style.display = "none";
   const div = document.createElement("div");
   div.setAttribute("class", "task-card");
-  div.setAttribute("task-card-id", ele.id); // task id= objec.id
-  // Delete, Edit, Complete Button
+  div.setAttribute("task-card-id", ele.id);
+  // Use textarea for task name
   div.innerHTML = ` 
-   <input id="taskname" disabled type="text" class="taskname ${
+   <textarea id="taskname" disabled rows="1" class="taskname ${
      ele.isCompleted ? "completed" : ""
-   }" value="${ele.text}" 
-/>
+   }">${ele.text}</textarea>
   <span>
     <button class="mark-complete"> <i class="fa-solid fa-circle-check"></i> </button>
     <button class="edit"> <i class="fa-solid fa-pen"></i> </button>
     <button class="delete"> <i class="fa-solid fa-trash"></i> </button>
   </span>
   `;
+  // Auto-resize textarea to fit content
+  const textarea = div.querySelector("#taskname");
+  autoResizeTextarea(textarea);
+  // Listen for input if enabled (edit mode)
+  textarea.addEventListener("input", function() {
+    autoResizeTextarea(this);
+  });
   container.prepend(div);
+}
+
+// Helper to auto-resize textarea height and show first line
+function autoResizeTextarea(textarea) {
+  textarea.style.height = "auto";
+  textarea.style.height = textarea.scrollHeight + "px";
+  textarea.scrollTop = 0; // Always show the first line
 }
 
 addtask.addEventListener("click", (e) => {
@@ -138,31 +151,31 @@ container.addEventListener("click", (e) => {
 
   // ✅ Edit as Task
   if (e.target.closest(".edit")) {
-    const inputField = taskCard.querySelector("#taskname");
+    const textarea = taskCard.querySelector("#taskname");
     const editBtn = e.target.closest(".edit");
     const icon = editBtn.querySelector("i");
 
-    if (inputField.disabled) {
+    if (textarea.disabled) {
       // Start editing
-      inputField.disabled = false;
-      inputField.style.backgroundColor="white";
-      inputField.style.color="black";
-      inputField.focus();
+      textarea.disabled = false;
+      textarea.style.backgroundColor = "white";
+      textarea.style.color = "black";
+      textarea.focus();
       icon.classList.remove("fa-pen");
       icon.classList.add("fa-check");
     } else {
       // Save edited task
-      const newText = inputField.value;
-      inputField.style.backgroundColor="";
-      inputField.style.color="";
-      if (newText === "") {
+      const newText = textarea.value;
+      textarea.style.backgroundColor = "";
+      textarea.style.color = "";
+      if (newText.trim() === "") {
         alert("Task can't be empty!");
         return;
       }
       taskArray[taskIndex].text = newText;
       localStorage.setItem("tasklist", JSON.stringify(taskArray));
 
-      inputField.disabled = true;
+      textarea.disabled = true;
       icon.classList.remove("fa-check");
       icon.classList.add("fa-pen");
     }
